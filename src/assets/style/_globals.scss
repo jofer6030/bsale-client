@@ -1,0 +1,40 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: $font-content;
+  color: $dark-gris;
+}
+
+.container {
+  max-width: 1440px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+input,
+button,
+textarea,
+a {
+  font-family: $font-content;
+  color: $dark-gris;
+  text-decoration: none;
+}
+a:active {
+  color: $orange;
+}
+
+.page-title {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 3rem;
+}

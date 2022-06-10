@@ -1,0 +1,61 @@
+.header {
+  padding: 1rem 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+  .container-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      a {
+        font-family: $font-logo;
+        font-size: 3.5rem;
+        color: $orange;
+        font-weight: 500;
+      }
+    }
+    .list-categories {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      li {
+        a {
+          text-decoration: none;
+          font-weight: 700;
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+    }
+    .search-product {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      input {
+        border: 1px solid $gray-light;
+        border-radius: 5px;
+        padding: 0.5rem;
+        font-size: 1rem;
+        width: 100%;
+        &:focus {
+          outline: 1px solid $orange;
+        }
+      }
+      button {
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        color: $orange;
+        &:hover {
+          color: $orange;
+          background: $gray;
+        }
+      }
+    }
+  }
+}

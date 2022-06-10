@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda Online Bsale</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <div class="container container-nav">
+          <h1 class="logo">
+            <a href="#/product">Bsale</a>
+          </h1>
+          <ul class="list-categories">
+            <li>
+              <a href="#/product/bebida_energetica">Bebida Energética</a>
+            </li>
+            <li>
+              <a href="#/product/pisco">Pisco</a>
+            </li>
+            <li>
+              <a href="#/product/ron">Ron</a>
+            </li>
+            <li>
+              <a href="#/product/bebida">Bebida</a>
+            </li>
+            <li>
+              <a href="#/product/snack">Snack</a>
+            </li>
+            <li>
+              <a href="#/product/cerveza">Cerveza</a>
+            </li>
+            <li>
+              <a href="#/product/vodka">Vodka</a>
+            </li>
+          </ul>
+          <div class="search-product">
+            <input type="text" placeholder="Search product" />
+            <button>Search</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <h2 class="page-title">List Products</h2>
+    <main class="container container-main">
+      <div class="product-pagination">
+        <button class="previous" disabled>Previous</button>
+        <button class="next" disabled>Next</button>
+      </div>
+      <section id="root"></section>
+      <div class="product-pagination">
+        <button class="previous" disabled>Previous</button>
+        <button class="next" disabled>Next</button>
+      </div>
+    </main>
+  </body>
+</html>

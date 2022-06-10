@@ -1,0 +1,26 @@
+.container-main {
+  .product-pagination {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    button {
+      border: 1px solid $orange;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: bold;
+      width: 60px;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &.active {
+        background-color: $orange;
+        color: white;
+      }
+    }
+  }
+}
