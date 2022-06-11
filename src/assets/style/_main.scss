@@ -9,17 +9,65 @@
       border-radius: 5px;
       font-size: 12px;
       font-weight: bold;
-      width: 60px;
-      padding: 0.5rem 0;
+      padding: 0.5rem 1rem;
       cursor: pointer;
       &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+        &:hover {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
       }
 
       &.active {
         background-color: $orange;
         color: white;
+        &:hover {
+          background-color: darken($orange, 10%);
+          color: white;
+          border: 1px solid $orange;
+        }
+      }
+    }
+    .order-products {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+
+      select {
+        border: 1px solid $gray-light;
+        border-radius: 5px;
+        font-size: 14px;
+        padding: 0.5rem;
+        padding-right: 2rem;
+        outline: none;
+        cursor: pointer;
+        &:focus {
+          border: 1px solid $orange;
+        }
+      }
+
+      span {
+        display: none;
+        &.active {
+          position: absolute;
+          right: 22px;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background-color: $orange;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          i {
+            font-size: 7px;
+            color: white;
+            font-weight: bold;
+          }
+        }
       }
     }
   }

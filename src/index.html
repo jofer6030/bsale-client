@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Tienda Online Bsale</title>
   </head>
   <body>
@@ -14,45 +21,67 @@
             <a href="#/product">Bsale</a>
           </h1>
           <ul class="list-categories">
-            <li>
-              <a href="#/product/bebida_energetica">Bebida Energética</a>
+            <li id="bebida-energetica">
+              <a href="#/product/bebida energetica">Bebida Energética</a>
             </li>
-            <li>
+            <li id="pisco">
               <a href="#/product/pisco">Pisco</a>
             </li>
-            <li>
+            <li id="ron">
               <a href="#/product/ron">Ron</a>
             </li>
-            <li>
+            <li id="bebida">
               <a href="#/product/bebida">Bebida</a>
             </li>
-            <li>
+            <li id="snack">
               <a href="#/product/snack">Snack</a>
             </li>
-            <li>
+            <li id="cerveza">
               <a href="#/product/cerveza">Cerveza</a>
             </li>
-            <li>
+            <li id="vodka">
               <a href="#/product/vodka">Vodka</a>
             </li>
           </ul>
           <div class="search-product">
-            <input type="text" placeholder="Search product" />
-            <button>Search</button>
+            <input type="text" placeholder="Ejm. ron" />
+            <button>Buscar</button>
           </div>
         </div>
       </nav>
     </header>
-    <h2 class="page-title">List Products</h2>
+    <h2 class="page-title">Lista de Productos</h2>
     <main class="container container-main">
       <div class="product-pagination">
-        <button class="previous" disabled>Previous</button>
-        <button class="next" disabled>Next</button>
+        <div class="order-products">
+          <label>Ordenar por:</label>
+          <select id="select-attribute">
+            <option value="" selected disabled hidden>Seleccione</option>
+            <option value="asc">Nombre A-Z</option>
+            <option value="desc">Nombre Z-A</option>
+            <option value="price">Precio</option>
+          </select>
+          <span id="delete-attribute"><i class="fa fa-x"></i></span>
+        </div>
+        <button class="previous" disabled>
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="next" disabled>
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
-      <section id="root"></section>
+
+      <section id="root">
+        <!-- Content dinamic -->
+      </section>
+
       <div class="product-pagination">
-        <button class="previous" disabled>Previous</button>
-        <button class="next" disabled>Next</button>
+        <button class="previous" disabled>
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="next" disabled>
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
     </main>
   </body>

@@ -4,22 +4,38 @@
 
   .container-nav {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 1rem;
+
+    @media (min-width: 530px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+    }
     .logo {
       a {
         font-family: $font-logo;
-        font-size: 3.5rem;
+        font-size: 3rem;
         color: $orange;
         font-weight: 500;
       }
+      @media (min-width: 780px) {
+        a {
+          font-size: 3.5rem;
+        }
+      }
     }
     .list-categories {
-      display: flex;
       list-style: none;
-      gap: 1.5rem;
+      font-size: 12px;
+      display: flex;
       align-items: center;
+      justify-content: center;
+      gap: 1rem;
       flex-wrap: wrap;
+      padding: 0 1rem;
       li {
         a {
           text-decoration: none;
@@ -28,20 +44,40 @@
             color: $orange;
           }
         }
+        &.active {
+          a {
+            color: $orange;
+          }
+        }
+      }
+      @media (min-width: 1100px) {
+        gap: 1.5rem;
+        font-size: 16px;
+        padding: 0 0rem;
       }
     }
     .search-product {
       display: flex;
       gap: 1rem;
-      align-items: center;
+      flex-direction: row;
+
       input {
         border: 1px solid $gray-light;
         border-radius: 5px;
         padding: 0.5rem;
-        font-size: 1rem;
+        font-size: 13px;
         width: 100%;
         &:focus {
           outline: 1px solid $orange;
+        }
+        &::placeholder {
+          font-size: 13px;
+        }
+        @media (min-width: 620px) {
+          font-size: 16px;
+          &::placeholder {
+            font-size: 16px;
+          }
         }
       }
       button {
@@ -55,6 +91,13 @@
           color: $orange;
           background: $gray;
         }
+      }
+      @media (min-width: 530px) {
+        flex-direction: column;
+      }
+
+      @media (min-width: 780px) {
+        flex-direction: row;
       }
     }
   }

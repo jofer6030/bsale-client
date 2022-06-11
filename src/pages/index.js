@@ -1,7 +1,9 @@
 import Home from "./home.page";
-import BebidaEnergetica from "./bebida_energetica.page";
+import Category from "./category.page";
+import NotFound from "./notFound.page";
 
 export const pages = {
   home: Home,
-  bebida_energetica: BebidaEnergetica,
+  category: Category,
+  notFound: NotFound,
 };

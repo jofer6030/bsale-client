@@ -1,24 +1,25 @@
 import { baseURL } from "../config/url";
 
-import { createCardProduct } from "../helpers/createProduct";
+import { createCardProduct } from "../components/cardProduct";
 
-const getProducts = async (offset, limit) => {
+const getProducts = async (offset = 0, limit, order) => {
   const response = await fetch(
-    `${baseURL}/product/list?limit=${limit}&offset=${offset}`
+    `${baseURL}/product/list?limit=${limit}&offset=${offset}&order=${order}`
   );
   const products = await response.json();
   return products;
 };
 
-export default async (off = 0, limit = 10) => {
+export default async (limit = 10) => {
   const offsetFromLS = Number(localStorage.getItem("offset")) || 0;
-  const productList = await getProducts(offsetFromLS, limit);
+  const orderFromLS = localStorage.getItem("order") || "";
+  const productList = await getProducts(offsetFromLS, limit, orderFromLS);
   const { count, products, offset } = productList;
   localStorage.setItem("offset", offset);
+  localStorage.setItem("totalPages", Math.ceil(count / limit));
 
   const btnsNext = document.querySelectorAll(".next");
   const btnsPrev = document.querySelectorAll(".previous");
-  localStorage.setItem("totalPages", JSON.stringify(Math.ceil(count / limit)));
 
   btnsNext.forEach((btn) => {
     if (count <= 10 || offset + 10 >= count) {
