@@ -1,5 +1,6 @@
 import "./assets/style/style.scss";
 import { activeLink } from "./helpers/activeLink";
+import { clearProducList, searchProduct } from "./helpers/searchProduct";
 import { totalPages } from "./helpers/status";
 import { router } from "./routes/index.routes";
 
@@ -21,6 +22,12 @@ window.addEventListener("hashchange", () => {
   activeLink(window.location.hash);
 });
 
+/* search */
+const inputSearch = document.getElementById("search");
+inputSearch.addEventListener("input", searchProduct);
+inputSearch.addEventListener("blur", clearProducList);
+
+/* Pagination buttons */
 const btnsNext = document.querySelectorAll(".next");
 const btnsPrev = document.querySelectorAll(".previous");
 
@@ -64,6 +71,8 @@ btnsPrev.forEach((btn) => {
     router("#/product");
   });
 });
+
+/* Filter products by attributes */
 
 const filterForAttributes = document.getElementById("select-attribute");
 const deleteAttribute = document.getElementById("delete-attribute");
