@@ -14,9 +14,20 @@ export const createCardProduct = (products) => {
       product.url_image ||
       "https://bitsofco.de/content/images/2018/12/broken-1.png";
     productCard.querySelector(".product-name").innerHTML = product.name;
-    productCard.querySelector(
-      ".product-price"
-    ).innerHTML = `CLP ${product.price.toFixed(2)}`;
+    const productPrice = productCard.querySelector(".product-price");
+    if (product.discount) {
+      productPrice.classList.add("product-price-before");
+      productPrice.innerHTML = `CLP ${product.price.toFixed(2)}`;
+      const priceDiscount = document.createElement("span");
+      priceDiscount.classList.add("product-price-discount");
+      priceDiscount.innerHTML = `CLP ${(
+        product.price -
+        (product.price * product.discount) / 100
+      ).toFixed(2)}`;
+      productPrice.appendChild(priceDiscount);
+    } else {
+      productPrice.innerHTML = `CLP ${product.price.toFixed(2)}`;
+    }
     productCard.querySelector(".product-discount").innerHTML =
       product.discount === 0 ? "" : `-${product.discount}%`;
     productCard.querySelector(".product-category").innerHTML =

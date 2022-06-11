@@ -37,9 +37,16 @@ export const searchProduct = async (e) => {
     productItem.querySelector(".product-discount").innerHTML = product.discount
       ? `- ${product.discount}%`
       : "";
-    productItem.querySelector(
-      ".product-price"
-    ).innerHTML = `CLP ${product.price}`;
+    if (product.discount) {
+      productItem.querySelector(".product-price").innerHTML = `CLP ${(
+        product.price -
+        (product.price * product.discount) / 100
+      ).toFixed(2)}`;
+    } else {
+      productItem.querySelector(
+        ".product-price"
+      ).innerHTML = `CLP ${product.price.toFixed(2)}`;
+    }
 
     productsFind.appendChild(productItem);
   });

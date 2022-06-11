@@ -11,7 +11,7 @@ if (!window.location.hash) {
   window.location.hash = "#/product";
 }
 
-window.addEventListener("hashchange", () => {
+window.addEventListener("hashchange", (e) => {
   localStorage.clear();
   router(window.location.hash);
   const links = document.querySelectorAll("li");
@@ -77,14 +77,22 @@ btnsPrev.forEach((btn) => {
 const filterForAttributes = document.getElementById("select-attribute");
 const deleteAttribute = document.getElementById("delete-attribute");
 
-filterForAttributes.value = localStorage.getItem("order") || "";
+filterForAttributes.value =
+  localStorage.getItem("order") ||
+  (localStorage.getItem("price") && `price ${localStorage.getItem("price")}`) ||
+  "";
 if (filterForAttributes.value !== "") {
   deleteAttribute.classList.add("active");
 }
 
 filterForAttributes.addEventListener("change", (e) => {
   deleteAttribute.classList.add("active");
-  localStorage.setItem("order", e.target.value);
+  if (e.target.value.startsWith("price")) {
+    const price = e.target.value.split(" ")[1];
+    localStorage.setItem("price", price);
+  } else {
+    localStorage.setItem("order", e.target.value);
+  }
   if (!["#/product"].includes(window.location.hash)) {
     router(window.location.hash);
     return;
@@ -96,6 +104,7 @@ deleteAttribute.addEventListener("click", () => {
   filterForAttributes.value = "";
   deleteAttribute.classList.remove("active");
   localStorage.setItem("order", "");
+  localStorage.setItem("price", "");
   if (!["#/product"].includes(window.location.hash)) {
     router(window.location.hash);
     return;

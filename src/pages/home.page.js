@@ -2,9 +2,9 @@ import { baseURL } from "../config/url";
 
 import { createCardProduct } from "../components/cardProduct";
 
-const getProducts = async (offset = 0, limit, order) => {
+const getProducts = async (offset = 0, limit, order = "", price = "") => {
   const response = await fetch(
-    `${baseURL}/product/list?limit=${limit}&offset=${offset}&order=${order}`
+    `${baseURL}/product/list?limit=${limit}&offset=${offset}&order=${order}&price=${price}`
   );
   const products = await response.json();
   return products;
@@ -13,7 +13,13 @@ const getProducts = async (offset = 0, limit, order) => {
 export default async (limit = 10) => {
   const offsetFromLS = Number(localStorage.getItem("offset")) || 0;
   const orderFromLS = localStorage.getItem("order") || "";
-  const productList = await getProducts(offsetFromLS, limit, orderFromLS);
+  const priceFromLS = localStorage.getItem("price") || "";
+  const productList = await getProducts(
+    offsetFromLS,
+    limit,
+    orderFromLS,
+    priceFromLS
+  );
   const { count, products, offset } = productList;
   localStorage.setItem("offset", offset);
   localStorage.setItem("totalPages", Math.ceil(count / limit));

@@ -13,7 +13,14 @@
     padding: 1rem;
     width: 100%;
     height: 100%;
+    transition: all 0.3s ease-in-out;
+
     position: relative;
+    &:hover {
+      transform: scale(1.02);
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
     .product-card-image {
       height: 350px;
       background-size: cover;
@@ -25,7 +32,8 @@
       overflow: hidden;
       img {
         width: 100%;
-        object-fit: cover;
+        height: 100%;
+        object-fit: contain;
         display: block;
       }
     }
@@ -43,7 +51,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         .product-price {
           font-size: 1.2rem;
           font-weight: 600;
@@ -51,6 +58,19 @@
         .product-discount {
           color: #96c742;
           font-size: 1.5rem;
+        }
+        .product-price-before {
+          color: $gray;
+          font-size: 12px;
+          text-decoration: line-through;
+          .product-price-discount {
+            margin-left: 0.5rem;
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: $dark-gris;
+            text-decoration: none;
+          }
         }
       }
     }
