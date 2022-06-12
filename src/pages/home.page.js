@@ -3,11 +3,15 @@ import { baseURL } from "../config/url";
 import { createCardProduct } from "../components/cardProduct";
 
 const getProducts = async (offset = 0, limit, order = "", price = "") => {
-  const response = await fetch(
-    `${baseURL}/product/list?limit=${limit}&offset=${offset}&order=${order}&price=${price}`
-  );
-  const products = await response.json();
-  return products;
+  try {
+    const response = await fetch(
+      `${baseURL}/product/list?limit=${limit}&offset=${offset}&order=${order}&price=${price}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default async (limit = 10) => {
@@ -20,6 +24,13 @@ export default async (limit = 10) => {
     orderFromLS,
     priceFromLS
   );
+  console.log(productList);
+  if (Object.keys(productList).length === 1 || !productList.products.length) {
+    const notFound = document.createElement("div");
+    notFound.classList.add("not-found");
+    notFound.innerHTML = `<h2>No hay Productos  </h2>`;
+    return notFound;
+  }
   const { count, products, offset } = productList;
   localStorage.setItem("offset", offset);
   localStorage.setItem("totalPages", Math.ceil(count / limit));
