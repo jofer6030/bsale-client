@@ -65,7 +65,7 @@ Al realizar una petición HTTP, el servicio retornará los producto de la tienda
 - **discount**: Porcentaje de descuento del producto.
 - **category**: Id de la categoria del producto.
 
-### GET Lista de prodictos por categoría
+### GET Lista de productos por categoría
 
 `GET /api/v1/product/list/:categoryName`
 
