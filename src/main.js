@@ -1,6 +1,10 @@
 import "./assets/style/style.scss";
 import { activeLink } from "./helpers/activeLink";
-import { clearProducList, searchProduct } from "./helpers/searchProduct";
+import {
+  clearProducList,
+  clearProducListBlur,
+  searchProduct,
+} from "./helpers/searchProduct";
 import { totalPages } from "./helpers/status";
 import { router } from "./routes/index.routes";
 
@@ -25,7 +29,8 @@ window.addEventListener("hashchange", (e) => {
 /* search */
 const inputSearch = document.getElementById("search");
 inputSearch.addEventListener("input", searchProduct);
-inputSearch.addEventListener("blur", clearProducList);
+inputSearch.addEventListener("focus", clearProducList);
+inputSearch.addEventListener("blur", clearProducListBlur);
 
 /* Pagination buttons */
 const btnsNext = document.querySelectorAll(".next");

@@ -107,6 +107,7 @@
             img {
               border-right: 1px solid $orange;
               transition: all 0.3s ease-in-out;
+              pointer-events: none;
             }
           }
           .product-details {
@@ -116,18 +117,23 @@
             justify-content: space-between;
             padding: 0.5rem;
             font-size: 14px;
+            pointer-events: none;
 
             & > span {
               font-weight: 900;
+              pointer-events: none;
             }
             .product-attributes {
               display: flex;
               align-items: center;
               justify-content: space-between;
               flex-wrap: wrap;
+              pointer-events: none;
+
               span:first-of-type {
                 color: green;
                 font-weight: 600;
+                pointer-events: none;
               }
             }
           }
@@ -139,6 +145,7 @@
           border-right: 1px solid $gray-light;
           object-fit: contain;
           transition: all 0.3s ease-in-out;
+          pointer-events: none;
         }
       }
     }

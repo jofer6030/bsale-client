@@ -1,3 +1,4 @@
+import { productDetails } from "../components/productDetail";
 import { baseURL } from "../config/url";
 import productItemView from "../views/product_item.html";
 
@@ -14,9 +15,9 @@ const getProducts = async (search) => {
     console.log(error.message);
   }
 };
+const productsFind = document.querySelector(".products-find");
 
 export const searchProduct = async (e) => {
-  const productsFind = document.querySelector(".products-find");
   productsFind.classList.add("active");
   while (productsFind.firstChild) {
     productsFind.removeChild(productsFind.firstChild);
@@ -48,15 +49,29 @@ export const searchProduct = async (e) => {
       ).innerHTML = `CLP ${product.price.toFixed(2)}`;
     }
 
+    productItem.addEventListener("click", () => productDetails(product));
     productsFind.appendChild(productItem);
   });
 };
 
-export const clearProducList = (e) => {
-  const productsFind = document.querySelector(".products-find");
+export const clearProducList = () => {
   productsFind.classList.remove("active");
   while (productsFind.firstChild) {
     productsFind.removeChild(productsFind.firstChild);
   }
-  e.target.value = "";
 };
+
+export const clearProducListBlur = (e) => {
+  if (e.target.value === "") {
+    clearProducList();
+  }
+};
+
+productsFind.addEventListener("mouseleave", (e) => {
+  const modal = document.querySelector(".modal-product-detail");
+  if (modal.classList.contains("active")) {
+    return;
+  } else {
+    clearProducList();
+  }
+});
